@@ -1,10 +1,17 @@
 // Initialize the map
 const map = L.map('map').setView([40.7128, -74.0060], 4); // Default view: USA
 
-// Add OpenStreetMap tiles
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    maxZoom: 19
+// Mapbox access token
+const mapboxToken = 'pk.eyJ1IjoiamFzb25sb3JkODQiLCJhIjoiY21qa3FlZWVpMGUzdzNmcHY2d2d1ejY2dCJ9.vWiLbqQ0umwGGnpeS7U96Q';
+
+// Add Mapbox tiles - Using custom style
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
+    tileSize: 512,
+    maxZoom: 19,
+    zoomOffset: -1,
+    id: 'jasonlord84/cmdra3zcw000h01r17km26edi', // Your custom Mapbox style
+    accessToken: mapboxToken
 }).addTo(map);
 
 // Store for pins and temporary pin location
